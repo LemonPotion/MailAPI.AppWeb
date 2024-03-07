@@ -8,17 +8,14 @@ using System.Threading.Tasks;
 
 namespace MailAPI.Data.Models
 {
-    public class User
+    internal class MessageHistory
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int MessageHistoryID { get; set; }
+        [ForeignKey("UserID")]
         public int UserID { get; set; }
-        [ForeignKey("RoleID")]
-        public int RoleID { get; set; }
-        public string Email { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
-        public string FirstName { get; set; } = string.Empty;
-
-        public string LastName { get; set; } =string.Empty;
+        [ForeignKey("MessageID")]
+        public int  MessageID { get; set; }
     }
 }

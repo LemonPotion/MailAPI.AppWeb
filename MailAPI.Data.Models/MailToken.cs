@@ -8,11 +8,15 @@ using System.Threading.Tasks;
 
 namespace MailAPI.Data.Models
 {
-    internal class Role
+    internal class MailToken
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int RoleId { get; set; }
-        public  string RoleName { get; set; }
+        public int TokenID {  get; set; }
+        public string Key{ get; set; }
+        public DateTime ExpirationDate { get; set; }
+
+        [ForeignKey("UserID")]
+        public int UserID { get; set; }
     }
 }
