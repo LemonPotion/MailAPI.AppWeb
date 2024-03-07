@@ -1,0 +1,11 @@
+D:\MailAPI.AppWeb\MailAPI.Services\bin\Debug\net7.0\MailAPI.Services.deps.json
+D:\MailAPI.AppWeb\MailAPI.Services\bin\Debug\net7.0\MailAPI.Services.dll
+D:\MailAPI.AppWeb\MailAPI.Services\bin\Debug\net7.0\MailAPI.Services.pdb
+D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.AssemblyInfoInputs.cache
+D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.AssemblyInfo.cs
+D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.csproj.CoreCompileInputs.cache
+D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.dll
+D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\refint\MailAPI.Services.dll
+D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.pdb
+D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\ref\MailAPI.Services.dll

@@ -1,0 +1,17 @@
+D:\MailAPI.AppWeb\MailAPI.Data\bin\Debug\net7.0\MailAPI.Data.deps.json
+D:\MailAPI.AppWeb\MailAPI.Data\bin\Debug\net7.0\MailAPI.Data.dll
+D:\MailAPI.AppWeb\MailAPI.Data\bin\Debug\net7.0\MailAPI.Data.pdb
+D:\MailAPI.AppWeb\MailAPI.Data\bin\Debug\net7.0\MailAPI.Data.Models.dll
+D:\MailAPI.AppWeb\MailAPI.Data\bin\Debug\net7.0\MailAPI.Data.Models.pdb
+D:\MailAPI.AppWeb\MailAPI.Data\obj\Debug\net7.0\MailAPI.Data.csproj.AssemblyReference.cache
+D:\MailAPI.AppWeb\MailAPI.Data\obj\Debug\net7.0\MailAPI.Data.GeneratedMSBuildEditorConfig.editorconfig
+D:\MailAPI.AppWeb\MailAPI.Data\obj\Debug\net7.0\MailAPI.Data.AssemblyInfoInputs.cache
+D:\MailAPI.AppWeb\MailAPI.Data\obj\Debug\net7.0\MailAPI.Data.AssemblyInfo.cs
+D:\MailAPI.AppWeb\MailAPI.Data\obj\Debug\net7.0\MailAPI.Data.csproj.CoreCompileInputs.cache
+D:\MailAPI.AppWeb\MailAPI.Data\obj\Debug\net7.0\MailAPI..6A2EC4DE.Up2Date
+D:\MailAPI.AppWeb\MailAPI.Data\obj\Debug\net7.0\MailAPI.Data.dll
+D:\MailAPI.AppWeb\MailAPI.Data\obj\Debug\net7.0\refint\MailAPI.Data.dll
+D:\MailAPI.AppWeb\MailAPI.Data\obj\Debug\net7.0\MailAPI.Data.pdb
+D:\MailAPI.AppWeb\MailAPI.Data\obj\Debug\net7.0\ref\MailAPI.Data.dll
+D:\MailAPI.AppWeb\MailAPI.Data\bin\Debug\net7.0\MailAPI.Data.runtimeconfig.json
+D:\MailAPI.AppWeb\MailAPI.Data\obj\Debug\net7.0\MailAPI.Data.genruntimeconfig.cache
