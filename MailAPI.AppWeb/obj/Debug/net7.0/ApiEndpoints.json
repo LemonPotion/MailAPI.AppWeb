@@ -1,9 +1,45 @@
 [
   {
     "ContainingType": "MailAPI.AppWeb.Controllers.MessageController",
+    "Method": "GetMessageHistory",
+    "RelativePath": "api/Message/GetMessageHistoryList",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MailAPI.AppWeb.Controllers.MessageController",
     "Method": "send_email",
-    "RelativePath": "api/Message",
+    "RelativePath": "api/Message/SendEmail",
     "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "subject",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "body",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MailAPI.AppWeb.Controllers.MessageController",
+    "Method": "send_email_db",
+    "RelativePath": "api/Message/SendEmailDb",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [

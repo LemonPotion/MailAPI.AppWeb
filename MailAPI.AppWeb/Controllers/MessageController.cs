@@ -14,10 +14,22 @@ namespace MailAPI.AppWeb.Controllers
         {
             this.emailSender = emailSender;
         }
-        [HttpPost]
+        [HttpPost("SendEmail")]
         public IActionResult send_email(string email , string subject , string body)
         {
             emailSender.SendEmailAsync(email,subject,body);
+            return Ok();
+        }
+        [HttpGet("SendEmailDb")]
+        public IActionResult send_email_db(string email, string subject, string body)
+        {
+            emailSender.SendEmailDb(email,subject,body);
+            return Ok();
+        }
+        [HttpGet("GetMessageHistoryList")]
+        public IActionResult GetMessageHistory()
+        {
+            emailSender.GetMessageHistory();
             return Ok();
         }
     }

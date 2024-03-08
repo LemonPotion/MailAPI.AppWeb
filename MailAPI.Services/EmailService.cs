@@ -15,7 +15,23 @@ namespace MailAPI.Services
         {
             this.dbContextOptions = dbContext;
         }
-        private async Task<bool> SendEmailDb(string email, string subject, string message)
+        public async Task GetMessageHistory()
+        {
+            try
+            {
+                using (var dataContext = new DataContext(dbContextOptions))
+                {
+                    await dataContext.MessageHistory.ToListAsync();
+                };
+                Console.WriteLine("Получен список истории сообщений");
+
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        public async Task<bool> SendEmailDb(string email, string subject, string message)
         {
             try
             {
@@ -30,7 +46,7 @@ namespace MailAPI.Services
                     });
                     await dataContext.SaveChangesAsync();
                 };
-                Console.WriteLine("ok");
+                Console.WriteLine("Сообщение добавлено в бд");
                 return true;
             }
             catch (Exception ex) 
@@ -55,6 +71,7 @@ namespace MailAPI.Services
 
             mail.Body = bodyhtml;
 
+            
 
             // Настройка SMTP клиента для Gmail
             using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
@@ -76,8 +93,6 @@ namespace MailAPI.Services
                     Console.WriteLine($"Ошибка при отправке письма: {ex.Message}");
                 }
             }
-            await SendEmailDb(email,subject,message);
-
         }
         public string GetHTML(string email, string subject, string message)
         {
