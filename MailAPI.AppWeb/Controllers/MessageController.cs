@@ -8,9 +8,9 @@ namespace MailAPI.AppWeb.Controllers
     [ApiController]
     public class MessageController : ControllerBase
     {
-        private readonly IEmailSender emailSender;
+        private readonly IEmailService emailSender;
 
-        public MessageController(IEmailSender emailSender)
+        public MessageController(IEmailService emailSender)
         {
             this.emailSender = emailSender;
         }

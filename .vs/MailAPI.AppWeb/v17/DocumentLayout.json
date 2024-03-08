@@ -1,12 +1,37 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\MailAPI.AppWeb\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2513A328-6C60-49D8-863D-DE72C7664665}|MailAPI.Services\\MailAPI.Services.csproj|d:\\mailapi.appweb\\mailapi.services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2513A328-6C60-49D8-863D-DE72C7664665}|MailAPI.Services\\MailAPI.Services.csproj|solutionrelative:mailapi.services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "D:\\MailAPI.AppWeb\\MailAPI.Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "MailAPI.Services\\EmailService.cs",
+              "ToolTip": "D:\\MailAPI.AppWeb\\MailAPI.Services\\EmailService.cs",
+              "RelativeToolTip": "MailAPI.Services\\EmailService.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAiwBsAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-08T11:49:12.078Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

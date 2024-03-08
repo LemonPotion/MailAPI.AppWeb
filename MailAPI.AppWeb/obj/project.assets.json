@@ -1119,6 +1119,10 @@
       "MailAPI.Services/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "MailAPI.Data": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.16"
+        },
         "compile": {
           "bin/placeholder/MailAPI.Services.dll": {}
         },

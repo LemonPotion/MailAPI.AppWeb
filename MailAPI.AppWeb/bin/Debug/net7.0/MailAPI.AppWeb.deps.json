@@ -577,6 +577,10 @@
         }
       },
       "MailAPI.Services/1.0.0": {
+        "dependencies": {
+          "MailAPI.Data": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "7.0.16"
+        },
         "runtime": {
           "MailAPI.Services.dll": {}
         }

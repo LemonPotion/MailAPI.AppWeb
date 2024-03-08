@@ -1,10 +1,45 @@
-﻿using System.Net;
+﻿using Azure.Core;
+using MailAPI.Data;
+using MailAPI.Data.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
+using System.Net;
 using System.Net.Mail;
 
 namespace MailAPI.Services
 {
-    public class EmailSender : IEmailSender
+    public class EmailService : IEmailService
     {
+        private readonly DbContextOptions<DataContext> dbContextOptions;
+        public EmailService(DbContextOptions<DataContext> dbContext)
+        {
+            this.dbContextOptions = dbContext;
+        }
+        private async Task<bool> SendEmailDb(string email, string subject, string message)
+        {
+            try
+            {
+                using (var dataContext = new DataContext(dbContextOptions))
+                {
+                    await dataContext.Message.AddAsync(new Message
+                    {
+                        MailAdress = email,
+                        Subject = subject,
+                        Body = message,
+                        DateSent = DateTime.Now
+                    });
+                    await dataContext.SaveChangesAsync();
+                };
+                Console.WriteLine("ok");
+                return true;
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+
+        }
         public async Task SendEmailAsync(string email, string subject, string message) 
         {
             // Адрес отправителя
@@ -19,6 +54,8 @@ namespace MailAPI.Services
             mail.Subject =  subject;
 
             mail.Body = bodyhtml;
+
+
             // Настройка SMTP клиента для Gmail
             using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
             {
@@ -39,6 +76,8 @@ namespace MailAPI.Services
                     Console.WriteLine($"Ошибка при отправке письма: {ex.Message}");
                 }
             }
+            await SendEmailDb(email,subject,message);
+
         }
         public string GetHTML(string email, string subject, string message)
         {

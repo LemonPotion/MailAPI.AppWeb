@@ -1,6 +1,6 @@
 ﻿namespace MailAPI.Services
 {
-    public interface IEmailSender
+    public interface IEmailService
     {
         Task SendEmailAsync(string Email , string Subject , string message);
     }
