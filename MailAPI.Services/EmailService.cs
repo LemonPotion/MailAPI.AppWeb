@@ -11,24 +11,27 @@ namespace MailAPI.Services
     public class EmailService : IEmailService
     {
         private readonly DbContextOptions<DataContext> dbContextOptions;
+
         public EmailService(DbContextOptions<DataContext> dbContext)
         {
             this.dbContextOptions = dbContext;
         }
-        public async Task GetMessageHistory()
+        public async Task<List<MessageHistory>>  GetMessageHistory()
         {
             try
             {
                 using (var dataContext = new DataContext(dbContextOptions))
                 {
-                    await dataContext.MessageHistory.ToListAsync();
+                    var messagehistory = await dataContext.MessageHistory.ToListAsync();
+                    return messagehistory;
                 };
-                Console.WriteLine("Получен список истории сообщений");
+  
 
             }
             catch (Exception ex) 
             {
                 Console.WriteLine(ex.Message);
+                return new List<MessageHistory>();
             }
         }
         public async Task<bool> SendEmailDb(string email, string subject, string message)

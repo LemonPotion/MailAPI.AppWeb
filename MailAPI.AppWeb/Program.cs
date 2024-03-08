@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IEmailService,EmailService>();
+builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddDbContext<DataContext>(x =>
                     x.UseSqlServer(builder.Configuration.GetConnectionString("MainDbConnection")));
 
