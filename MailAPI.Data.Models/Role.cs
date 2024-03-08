@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace MailAPI.Data.Models
 {
-    internal class Role
+    public class Role
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RoleId { get; set; }
-        public  string RoleName { get; set; }
+        public  string RoleName { get; set; } = string.Empty;
     }
 }

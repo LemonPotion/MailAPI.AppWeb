@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MailAPI.Data.Models
 {
-    internal class MessageHistory
+    public class MessageHistory
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -75,3 +75,4 @@ D:\MailAPI.AppWeb\MailAPI.AppWeb\bin\Debug\net7.0\MailAPI.Services.dll
 D:\MailAPI.AppWeb\MailAPI.AppWeb\bin\Debug\net7.0\MailAPI.Data.pdb
 D:\MailAPI.AppWeb\MailAPI.AppWeb\bin\Debug\net7.0\MailAPI.Services.pdb
 D:\MailAPI.AppWeb\MailAPI.AppWeb\bin\Debug\net7.0\MailAPI.Data.Models.pdb
+D:\MailAPI.AppWeb\MailAPI.AppWeb\obj\Debug\net7.0\MailAPI.AppWeb.sourcelink.json

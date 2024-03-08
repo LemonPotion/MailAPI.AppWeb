@@ -9,3 +9,4 @@ D:\MailAPI.AppWeb\MailAPI.Data.Models\obj\Debug\net7.0\MailAPI.Data.Models.dll
 D:\MailAPI.AppWeb\MailAPI.Data.Models\obj\Debug\net7.0\refint\MailAPI.Data.Models.dll
 D:\MailAPI.AppWeb\MailAPI.Data.Models\obj\Debug\net7.0\MailAPI.Data.Models.pdb
 D:\MailAPI.AppWeb\MailAPI.Data.Models\obj\Debug\net7.0\ref\MailAPI.Data.Models.dll
+D:\MailAPI.AppWeb\MailAPI.Data.Models\obj\Debug\net7.0\MailAPI.Data.Models.sourcelink.json

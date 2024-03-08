@@ -15,3 +15,4 @@ D:\MailAPI.AppWeb\MailAPI.Data\obj\Debug\net7.0\MailAPI.Data.pdb
 D:\MailAPI.AppWeb\MailAPI.Data\obj\Debug\net7.0\ref\MailAPI.Data.dll
 D:\MailAPI.AppWeb\MailAPI.Data\bin\Debug\net7.0\MailAPI.Data.runtimeconfig.json
 D:\MailAPI.AppWeb\MailAPI.Data\obj\Debug\net7.0\MailAPI.Data.genruntimeconfig.cache
+D:\MailAPI.AppWeb\MailAPI.Data\obj\Debug\net7.0\MailAPI.Data.sourcelink.json

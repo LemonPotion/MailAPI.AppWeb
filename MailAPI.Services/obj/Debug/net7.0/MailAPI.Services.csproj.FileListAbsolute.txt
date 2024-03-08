@@ -9,3 +9,4 @@ D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.dll
 D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\refint\MailAPI.Services.dll
 D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.pdb
 D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\ref\MailAPI.Services.dll
+D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.sourcelink.json
