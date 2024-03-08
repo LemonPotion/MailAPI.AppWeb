@@ -28,7 +28,8 @@ namespace MailAPI.Services
             Console.WriteLine("User check");
             if (UserExists(Email, dbContextOptions))
             {
-                if (VerifyEmail(Email))
+                string code = SendEmailVerification(Email);
+                if (ValidateCode(code))
                 {
                     var salt = GenerateSalt();
                     var PasswordHash = HashPasswordAsync(password, salt);
@@ -59,6 +60,62 @@ namespace MailAPI.Services
                 
             }
         }
+        public async Task<bool> Login(string Email, string Password)
+        {
+            var IsLogin=await LoginChecker(Email, Password, false);
+            return IsLogin;
+        }
+
+        public async Task<bool> LoginChecker(string Email,string Password, bool DeleteUSer)
+        {
+            try
+            {
+                using (var dataContext = new DataContext(dbContextOptions))
+                {
+                    // Проверка существования пользователя с определенным адресом электронной почты
+                    var user = await dataContext.Users.FirstOrDefaultAsync(x => x.Email == Email);
+                    if (user != null)
+                    {
+                        string salt = user.Salt;
+                        string passwordHash = HashPasswordAsync(Password, salt);
+                        if (passwordHash.Equals(user.PasswordHash))
+                        {
+                            Console.WriteLine("Успешная авторизация");
+                            if (DeleteUSer)
+                            {
+                                dataContext.Users.Remove(user);
+                                Console.WriteLine("Пользователь удален");
+                                await dataContext.SaveChangesAsync();
+                            }
+                            return true;
+                        }
+                        Console.WriteLine("Неверный пароль");
+                        return false;
+                    }
+                    Console.WriteLine("Неверный логин");
+
+                    return false;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+        public async Task<bool> DeleteUser(string Email, string Password)
+        {
+            using (var dataContext = new DataContext(dbContextOptions))
+            {
+                var loginTask = LoginChecker(Email, Password,true); 
+                bool isLoggedIn = await loginTask;
+                return isLoggedIn;
+            }
+        }
+        public bool ValidateCode(string code)
+        {
+            return true;
+        }
         public string GenerateSalt()
         {
             byte[] saltBytes = new  byte[16];
@@ -77,19 +134,20 @@ namespace MailAPI.Services
                 return Convert.ToBase64String(hashedPassword);
             }
         }
-        public bool VerifyEmail(string email)
+        public string SendEmailVerification(string email)
         {
             // Адрес отправителя
             string fromEmail = "vladred2016@gmail.com";
+            Random random = new Random();
 
             string password = "xxgm atru tips dzdd";
             // Создание экземпляра почтового сообщения
             MailMessage mail = new MailMessage(fromEmail, email);
             mail.IsBodyHtml = true;
 
-            mail.Subject = "MailASP";
+            mail.Subject = "Код подтверждения MailASP";
 
-            mail.Body = "Вы успешно зарегистрировали аккаунт в MailASP";
+            mail.Body =  $"{random.Next(0,9999)}";
 
 
 
@@ -105,14 +163,14 @@ namespace MailAPI.Services
 
                 try
                 {
-                    smtpClient.Send(mail);
+                    smtpClient.SendMailAsync(mail).GetAwaiter().GetResult();
                     Console.WriteLine("Письмо отправленно");
-                    return true;
+                    return mail.Body;
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine($"Ошибка при отправке письма: {ex.Message}");
-                    return false;
+                    return "";
                 }
             }
         }
@@ -134,6 +192,5 @@ namespace MailAPI.Services
                 return false;
             }
         }
-
     }
 }

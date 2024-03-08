@@ -21,6 +21,18 @@ namespace MailAPI.AppWeb.Controllers
             UserService.CreateUser(FirstName,LastName,Email,password);
             return Ok();
         }
+        [HttpGet("LoginUser")]
+        public IActionResult LoginUser(string  Email, string password) 
+        {
+            UserService.Login(Email, password);
+            return Ok();
+        }
+        [HttpGet("DeleteUser")]
+        public IActionResult DeleteUser(string Email, string password)
+        {
+            UserService.DeleteUser(Email, password);
+            return Ok();
+        }
 
     }
 }

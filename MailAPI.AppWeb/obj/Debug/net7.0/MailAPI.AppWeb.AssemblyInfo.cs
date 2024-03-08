@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MailAPI.AppWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+724afcd6330cdc68b0b3c6513524ce4d4d33ee31")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a6d6bf1b0ea0c12f5f1456ac23705f2d72dc888d")]
 [assembly: System.Reflection.AssemblyProductAttribute("MailAPI.AppWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MailAPI.AppWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
