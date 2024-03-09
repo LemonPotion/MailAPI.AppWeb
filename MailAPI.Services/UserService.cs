@@ -44,7 +44,8 @@ namespace MailAPI.Services
                                 Email = Email,
                                 PasswordHash = PasswordHash.ToString(),
                                 Salt = salt,
-                            });
+                                RoleID = GetRole()
+                            }) ;
                             await dataContext.SaveChangesAsync();
                         };
                     }
@@ -62,11 +63,22 @@ namespace MailAPI.Services
         }
         public async Task<bool> Login(string Email, string Password)
         {
-            var IsLogin=await LoginChecker(Email, Password, false);
+            var IsLogin=await LoginChecker(Email, Password);
             return IsLogin;
         }
+        public async Task<bool> Exit(string Email)
+        {
+            using (var dataContext = new DataContext(dbContextOptions))
+            {
+                var user = dataContext.Users.FirstOrDefaultAsync(x => x.Email == Email);
+                if (user!= null) 
+                {
 
-        public async Task<bool> LoginChecker(string Email,string Password, bool DeleteUSer)
+                }
+            }
+            return true;
+        }
+        public async Task<bool> LoginChecker(string Email,string Password)
         {
             try
             {
@@ -81,12 +93,6 @@ namespace MailAPI.Services
                         if (passwordHash.Equals(user.PasswordHash))
                         {
                             Console.WriteLine("Успешная авторизация");
-                            if (DeleteUSer)
-                            {
-                                dataContext.Users.Remove(user);
-                                Console.WriteLine("Пользователь удален");
-                                await dataContext.SaveChangesAsync();
-                            }
                             return true;
                         }
                         Console.WriteLine("Неверный пароль");
@@ -105,12 +111,37 @@ namespace MailAPI.Services
         }
         public async Task<bool> DeleteUser(string Email, string Password)
         {
-            using (var dataContext = new DataContext(dbContextOptions))
+            try
             {
-                var loginTask = LoginChecker(Email, Password,true); 
-                bool isLoggedIn = await loginTask;
-                return isLoggedIn;
+                using (var dataContext = new DataContext(dbContextOptions))
+                {
+
+                    var user = await dataContext.Users.FirstOrDefaultAsync(x => x.Email == Email);
+                    if (user != null)
+                    {
+                        string salt = user.Salt;
+                        string passwordHash = HashPasswordAsync(Password, salt);
+                        if (passwordHash.Equals(user.PasswordHash))
+                        {
+                            Console.WriteLine("Успешная авторизация");
+                            dataContext.Users.Remove(user);
+                            await dataContext.SaveChangesAsync();
+                            return true;
+                        }
+                    }
+                    Console.WriteLine("Ошибка удаления");
+                    return false;
+                }
             }
+            catch
+            {
+                Console.WriteLine($"Failed to delete user: {Email}");
+                return false;
+            }
+        }
+        public int GetRole()
+        {
+            return 1;
         }
         public bool ValidateCode(string code)
         {
@@ -134,6 +165,7 @@ namespace MailAPI.Services
                 return Convert.ToBase64String(hashedPassword);
             }
         }
+
         public string SendEmailVerification(string email)
         {
             // Адрес отправителя
@@ -163,7 +195,7 @@ namespace MailAPI.Services
 
                 try
                 {
-                    smtpClient.SendMailAsync(mail).GetAwaiter().GetResult();
+                    smtpClient.SendMailAsync(mail).GetAwaiter();
                     Console.WriteLine("Письмо отправленно");
                     return mail.Body;
                 }

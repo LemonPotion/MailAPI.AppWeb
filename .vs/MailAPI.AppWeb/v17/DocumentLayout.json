@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\MailAPI.AppWeb\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2513A328-6C60-49D8-863D-DE72C7664665}|MailAPI.Services\\MailAPI.Services.csproj|D:\\MailAPI.AppWeb\\mailapi.services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2513A328-6C60-49D8-863D-DE72C7664665}|MailAPI.Services\\MailAPI.Services.csproj|solutionrelative:mailapi.services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2513A328-6C60-49D8-863D-DE72C7664665}|MailAPI.Services\\MailAPI.Services.csproj|d:\\mailapi.appweb\\mailapi.services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2513A328-6C60-49D8-863D-DE72C7664665}|MailAPI.Services\\MailAPI.Services.csproj|solutionrelative:mailapi.services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF634BE7-BEDF-4EAC-93F8-6941DCCA855C}|MailAPI.Data\\MailAPI.Data.csproj|D:\\MailAPI.AppWeb\\mailapi.data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF634BE7-BEDF-4EAC-93F8-6941DCCA855C}|MailAPI.Data\\MailAPI.Data.csproj|solutionrelative:mailapi.data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CB43F5CA-FA99-4B56-BF97-129F18A9B4DB}|MailAPI.AppWeb\\MailAPI.AppWeb.csproj|D:\\MailAPI.AppWeb\\mailapi.appweb\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB43F5CA-FA99-4B56-BF97-129F18A9B4DB}|MailAPI.AppWeb\\MailAPI.AppWeb.csproj|solutionrelative:mailapi.appweb\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2513A328-6C60-49D8-863D-DE72C7664665}|MailAPI.Services\\MailAPI.Services.csproj|D:\\MailAPI.AppWeb\\mailapi.services\\iservices\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,12 +23,12 @@
       "RelativeMoniker": "D:0:0:{2513A328-6C60-49D8-863D-DE72C7664665}|MailAPI.Services\\MailAPI.Services.csproj|solutionrelative:mailapi.services\\iservices\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB43F5CA-FA99-4B56-BF97-129F18A9B4DB}|MailAPI.AppWeb\\MailAPI.AppWeb.csproj|D:\\MailAPI.AppWeb\\mailapi.appweb\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB43F5CA-FA99-4B56-BF97-129F18A9B4DB}|MailAPI.AppWeb\\MailAPI.AppWeb.csproj|solutionrelative:mailapi.appweb\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AD141F2B-94FE-4E05-9EA4-6EFDA0272FD6}|MailAPI.Data.Models\\MailAPI.Data.Models.csproj|d:\\mailapi.appweb\\mailapi.data.models\\mailtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AD141F2B-94FE-4E05-9EA4-6EFDA0272FD6}|MailAPI.Data.Models\\MailAPI.Data.Models.csproj|solutionrelative:mailapi.data.models\\mailtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2513A328-6C60-49D8-863D-DE72C7664665}|MailAPI.Services\\MailAPI.Services.csproj|D:\\MailAPI.AppWeb\\mailapi.services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2513A328-6C60-49D8-863D-DE72C7664665}|MailAPI.Services\\MailAPI.Services.csproj|solutionrelative:mailapi.services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF634BE7-BEDF-4EAC-93F8-6941DCCA855C}|MailAPI.Data\\MailAPI.Data.csproj|D:\\MailAPI.AppWeb\\mailapi.data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF634BE7-BEDF-4EAC-93F8-6941DCCA855C}|MailAPI.Data\\MailAPI.Data.csproj|solutionrelative:mailapi.data\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AD141F2B-94FE-4E05-9EA4-6EFDA0272FD6}|MailAPI.Data.Models\\MailAPI.Data.Models.csproj|D:\\MailAPI.AppWeb\\mailapi.data.models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -63,45 +67,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
+              "Title": "MailToken.cs",
+              "DocumentMoniker": "D:\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailToken.cs",
+              "RelativeDocumentMoniker": "MailAPI.Data.Models\\MailToken.cs",
+              "ToolTip": "D:\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailToken.cs",
+              "RelativeToolTip": "MailAPI.Data.Models\\MailToken.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-09T09:03:18.265Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "EmailService.cs",
               "DocumentMoniker": "D:\\MailAPI.AppWeb\\MailAPI.Services\\EmailService.cs",
               "RelativeDocumentMoniker": "MailAPI.Services\\EmailService.cs",
               "ToolTip": "D:\\MailAPI.AppWeb\\MailAPI.Services\\EmailService.cs",
               "RelativeToolTip": "MailAPI.Services\\EmailService.cs",
-              "ViewState": "AQIAAEoAAAAAAAAAAAAIwEEAAAAAAAAA",
+              "ViewState": "AQIAABsAAAAAAAAAAAAowEEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-08T16:29:44.41Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "UserService.cs",
               "DocumentMoniker": "D:\\MailAPI.AppWeb\\MailAPI.Services\\UserService.cs",
               "RelativeDocumentMoniker": "MailAPI.Services\\UserService.cs",
               "ToolTip": "D:\\MailAPI.AppWeb\\MailAPI.Services\\UserService.cs",
               "RelativeToolTip": "MailAPI.Services\\UserService.cs",
-              "ViewState": "AQIAAEcAAAAAAAAAAAAewFMAAAArAAAA",
+              "ViewState": "AQIAABkAAAAAAAAAAAAywEsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-08T14:50:48.045Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "MailAPI.Data.csproj",
-              "DocumentMoniker": "D:\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj",
-              "RelativeDocumentMoniker": "MailAPI.Data\\MailAPI.Data.csproj",
-              "ToolTip": "D:\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj",
-              "RelativeToolTip": "MailAPI.Data\\MailAPI.Data.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-03-08T15:56:15.508Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\MailAPI.AppWeb\\MailAPI.AppWeb\\Program.cs",
               "RelativeDocumentMoniker": "MailAPI.AppWeb\\Program.cs",
@@ -109,12 +113,11 @@
               "RelativeToolTip": "MailAPI.AppWeb\\Program.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA7AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-08T15:52:20.63Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-08T15:52:20.63Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "20240308153732_UserUpdated.cs",
               "DocumentMoniker": "D:\\MailAPI.AppWeb\\MailAPI.Data\\Migrations\\20240308153732_UserUpdated.cs",
               "RelativeDocumentMoniker": "MailAPI.Data\\Migrations\\20240308153732_UserUpdated.cs",
@@ -126,7 +129,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "DataContext.cs",
               "DocumentMoniker": "D:\\MailAPI.AppWeb\\MailAPI.Data\\DataContext.cs",
               "RelativeDocumentMoniker": "MailAPI.Data\\DataContext.cs",
@@ -134,12 +137,11 @@
               "RelativeToolTip": "MailAPI.Data\\DataContext.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-08T15:28:49.941Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-08T15:28:49.941Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\MailAPI.AppWeb\\MailAPI.Data.Models\\User.cs",
               "RelativeDocumentMoniker": "MailAPI.Data.Models\\User.cs",
@@ -147,12 +149,11 @@
               "RelativeToolTip": "MailAPI.Data.Models\\User.cs",
               "ViewState": "AQIAAAYAAAAAAAAAAAAAABQAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-08T15:09:59.988Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-08T15:09:59.988Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "IEmailService.cs",
               "DocumentMoniker": "D:\\MailAPI.AppWeb\\MailAPI.Services\\IServices\\IEmailService.cs",
               "RelativeDocumentMoniker": "MailAPI.Services\\IServices\\IEmailService.cs",
@@ -165,20 +166,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "IUserService.cs",
               "DocumentMoniker": "D:\\MailAPI.AppWeb\\MailAPI.Services\\IServices\\IUserService.cs",
               "RelativeDocumentMoniker": "MailAPI.Services\\IServices\\IUserService.cs",
               "ToolTip": "D:\\MailAPI.AppWeb\\MailAPI.Services\\IServices\\IUserService.cs",
               "RelativeToolTip": "MailAPI.Services\\IServices\\IUserService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAgAAAARAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAkAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-08T14:50:12.102Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "MessageController.cs",
               "DocumentMoniker": "D:\\MailAPI.AppWeb\\MailAPI.AppWeb\\Controllers\\MessageController.cs",
               "RelativeDocumentMoniker": "MailAPI.AppWeb\\Controllers\\MessageController.cs",
@@ -190,20 +191,32 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "UserController.cs",
               "DocumentMoniker": "D:\\MailAPI.AppWeb\\MailAPI.AppWeb\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "MailAPI.AppWeb\\Controllers\\UserController.cs",
               "ToolTip": "D:\\MailAPI.AppWeb\\MailAPI.AppWeb\\Controllers\\UserController.cs",
               "RelativeToolTip": "MailAPI.AppWeb\\Controllers\\UserController.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAQwBoAAAAvAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAQwCcAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-08T14:48:07.934Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
+              "Title": "MailAPI.Data.csproj",
+              "DocumentMoniker": "D:\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj",
+              "RelativeDocumentMoniker": "MailAPI.Data\\MailAPI.Data.csproj",
+              "ToolTip": "D:\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj",
+              "RelativeToolTip": "MailAPI.Data\\MailAPI.Data.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-03-08T15:56:15.508Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "Message.cs",
               "DocumentMoniker": "D:\\MailAPI.AppWeb\\MailAPI.Data.Models\\Message.cs",
               "RelativeDocumentMoniker": "MailAPI.Data.Models\\Message.cs",
@@ -211,8 +224,7 @@
               "RelativeToolTip": "MailAPI.Data.Models\\Message.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-08T15:59:39.88Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-08T15:59:39.88Z"
             }
           ]
         }

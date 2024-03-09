@@ -27,12 +27,19 @@ namespace MailAPI.AppWeb.Controllers
             UserService.Login(Email, password);
             return Ok();
         }
-        [HttpGet("DeleteUser")]
+        [HttpDelete("DeleteUser")]
         public IActionResult DeleteUser(string Email, string password)
         {
             UserService.DeleteUser(Email, password);
             return Ok();
         }
+        [HttpDelete("Logout")]
+        public IActionResult Logout(string Email) 
+        {
+            UserService.Exit(Email);
+            return Ok();
+        }
+
 
     }
 }

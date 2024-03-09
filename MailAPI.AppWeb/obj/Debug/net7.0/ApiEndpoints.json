@@ -96,7 +96,7 @@
     "ContainingType": "MailAPI.AppWeb.Controllers.UserController",
     "Method": "DeleteUser",
     "RelativePath": "api/User/DeleteUser",
-    "HttpMethod": "GET",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -128,6 +128,22 @@
       },
       {
         "Name": "password",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MailAPI.AppWeb.Controllers.UserController",
+    "Method": "Logout",
+    "RelativePath": "api/User/Logout",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Email",
         "Type": "System.String",
         "IsRequired": false
       }
