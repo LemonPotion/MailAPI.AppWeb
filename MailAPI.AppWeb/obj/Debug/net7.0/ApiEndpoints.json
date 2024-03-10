@@ -63,37 +63,6 @@
   },
   {
     "ContainingType": "MailAPI.AppWeb.Controllers.UserController",
-    "Method": "CreateUser",
-    "RelativePath": "api/User/CreateUser",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "FirstName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "LastName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "password",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MailAPI.AppWeb.Controllers.UserController",
     "Method": "DeleteUser",
     "RelativePath": "api/User/DeleteUser",
     "HttpMethod": "DELETE",
@@ -144,6 +113,37 @@
     "Parameters": [
       {
         "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MailAPI.AppWeb.Controllers.UserController",
+    "Method": "CreateUser",
+    "RelativePath": "api/User/RegisterUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FirstName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LastName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "password",
         "Type": "System.String",
         "IsRequired": false
       }

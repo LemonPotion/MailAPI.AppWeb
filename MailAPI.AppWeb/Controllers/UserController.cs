@@ -15,10 +15,10 @@ namespace MailAPI.AppWeb.Controllers
         {
             this.UserService = UserService;
         }
-        [HttpPost("CreateUser")]
+        [HttpPost("RegisterUser")]
         public IActionResult CreateUser(string FirstName, string LastName, string Email, string password)
         {
-            UserService.CreateUser(FirstName,LastName,Email,password);
+            UserService.RegisterUser(FirstName,LastName,Email,password);
             return Ok();
         }
         [HttpGet("LoginUser")]
@@ -36,7 +36,7 @@ namespace MailAPI.AppWeb.Controllers
         [HttpDelete("Logout")]
         public IActionResult Logout(string Email) 
         {
-            UserService.Exit(Email);
+            UserService.Logout(Email);
             return Ok();
         }
 

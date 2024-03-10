@@ -12,6 +12,7 @@ using Azure.Core;
 using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using System.Net.Mail;
 using System.Net;
+using Microsoft.Extensions.Logging;
 
 namespace MailAPI.Services
 {
@@ -23,91 +24,128 @@ namespace MailAPI.Services
         {
             this.dbContextOptions = dbContext;
         }
-        public async Task CreateUser(string FirstName, string LastName, string Email, string password)
+        public async Task RegisterUser(string FirstName, string LastName, string Email, string password)
         {
-            Console.WriteLine("User check");
             if (UserExists(Email, dbContextOptions))
             {
                 string code = SendEmailVerification(Email);
                 if (ValidateCode(code))
                 {
                     var salt = GenerateSalt();
-                    var PasswordHash = HashPasswordAsync(password, salt);
+                    var PasswordHash = HashPassword(password, salt);
                     try
                     {
-                        using (var dataContext = new DataContext(dbContextOptions))
+                        // Ожидаем завершения операции добавления пользователя
+                        bool userAdded = await AddUser(FirstName, LastName, Email, PasswordHash, salt);
+                        if (userAdded)
                         {
-                            await dataContext.Users.AddAsync(new User
-                            {
-                                FirstName = FirstName,
-                                LastName = LastName,
-                                Email = Email,
-                                PasswordHash = PasswordHash.ToString(),
-                                Salt = salt,
-                                RoleID = GetRole()
-                            }) ;
-                            await dataContext.SaveChangesAsync();
-                        };
+                            Console.WriteLine("Пользователь успешно зарегистрирован");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Ошибка при регистрации пользователя");
+                        }
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        Console.WriteLine($"Ошибка при регистрации пользователя: {ex.Message}");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("false email");
+                    Console.WriteLine("Неверный код подтверждения электронной почты");
                 }
-                
+
+            }
+        }
+        public async Task<bool> AddUser(string FirstName, string LastName, string Email, string PasswordHash, string salt)
+        {
+            try
+            { 
+                using (var dataContext = new DataContext(dbContextOptions))
+                {
+                    await dataContext.Users.AddAsync(new User
+                    {
+                        FirstName = FirstName,
+                        LastName = LastName,
+                        Email = Email,
+                        PasswordHash = PasswordHash.ToString(),
+                        Salt = salt,
+                        RoleID = GetRole()
+                    });
+                    await dataContext.SaveChangesAsync();
+                };
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public async Task<User> GetUserByEmail(string Email, DataContext dataContext)
+        {
+            try
+            {
+                var user = await dataContext.Users.FirstOrDefaultAsync(x => x.Email == Email);
+                return user;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task DeleteUser(User user, DataContext dataContext)
+        {
+            try
+            {
+                dataContext.Remove(user);
+                await dataContext.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка при удалении пользователя: {ex.Message}");
             }
         }
         public async Task<bool> Login(string Email, string Password)
         {
-            var IsLogin=await LoginChecker(Email, Password);
-            return IsLogin;
-        }
-        public async Task<bool> Exit(string Email)
-        {
             using (var dataContext = new DataContext(dbContextOptions))
             {
-                var user = dataContext.Users.FirstOrDefaultAsync(x => x.Email == Email);
-                if (user!= null) 
-                {
+                var user = await GetUserByEmail(Email, dataContext);
 
-                }
-            }
-            return true;
-        }
-        public async Task<bool> LoginChecker(string Email,string Password)
-        {
-            try
-            {
-                using (var dataContext = new DataContext(dbContextOptions))
+                if (user != null)
                 {
-                    // Проверка существования пользователя с определенным адресом электронной почты
-                    var user = await dataContext.Users.FirstOrDefaultAsync(x => x.Email == Email);
-                    if (user != null)
+                    var PasswordHashed = HashPassword(Password, user.Salt);
+
+                    if (PasswordHashed.Equals(user.PasswordHash))
                     {
-                        string salt = user.Salt;
-                        string passwordHash = HashPasswordAsync(Password, salt);
-                        if (passwordHash.Equals(user.PasswordHash))
-                        {
-                            Console.WriteLine("Успешная авторизация");
-                            return true;
-                        }
+                        Console.WriteLine("Успешная авторизация");
+                        return true;
+                    }
+                    else
+                    {
                         Console.WriteLine("Неверный пароль");
                         return false;
                     }
-                    Console.WriteLine("Неверный логин");
-
+                }
+                else
+                {
+                    Console.WriteLine("Пользователь с указанным адресом электронной почты не найден");
                     return false;
                 }
             }
-            catch(Exception ex)
+        }
+        public async Task<bool> Logout(string Email)
+        {
+            using (var dataContext = new DataContext(dbContextOptions))
             {
-                Console.WriteLine(ex.Message);
-                return false;
+                var user = await GetUserByEmail(Email, dataContext);
+                if (user.Email.Equals(Email)) 
+                {
+                    return true;
+                }
             }
+            return true;
         }
         public async Task<bool> DeleteUser(string Email, string Password)
         {
@@ -115,30 +153,27 @@ namespace MailAPI.Services
             {
                 using (var dataContext = new DataContext(dbContextOptions))
                 {
-
-                    var user = await dataContext.Users.FirstOrDefaultAsync(x => x.Email == Email);
+                    var user = await GetUserByEmail(Email, dataContext); // Передаем dataContext в качестве аргумента
                     if (user != null)
                     {
-                        string salt = user.Salt;
-                        string passwordHash = HashPasswordAsync(Password, salt);
-                        if (passwordHash.Equals(user.PasswordHash))
+                        var salt = user.Salt;
+                        var PasswordHashed = HashPassword(Password, salt);
+                        if (user.PasswordHash.Equals(PasswordHashed))
                         {
-                            Console.WriteLine("Успешная авторизация");
-                            dataContext.Users.Remove(user);
-                            await dataContext.SaveChangesAsync();
+                            await DeleteUser(user, dataContext); // Передаем dataContext в качестве аргумента
                             return true;
                         }
                     }
-                    Console.WriteLine("Ошибка удаления");
                     return false;
                 }
             }
             catch
             {
-                Console.WriteLine($"Failed to delete user: {Email}");
                 return false;
             }
         }
+
+
         public int GetRole()
         {
             return 1;
@@ -156,7 +191,7 @@ namespace MailAPI.Services
             }
             return Convert.ToBase64String(saltBytes);
         }
-        private string HashPasswordAsync(string password, string salt)
+        private string HashPassword(string password, string salt)
         {
             using (var sha256 = SHA256.Create())
             {

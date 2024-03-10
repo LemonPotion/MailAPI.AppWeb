@@ -40,6 +40,7 @@ namespace MailAPI.Services
             {
                 using (var dataContext = new DataContext(dbContextOptions))
                 {
+
                     await dataContext.Message.AddAsync(new Message
                     {
                         MailAdress = email,
