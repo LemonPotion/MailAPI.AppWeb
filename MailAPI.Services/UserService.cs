@@ -137,15 +137,26 @@ namespace MailAPI.Services
         }
         public async Task<bool> Logout(string Email)
         {
-            using (var dataContext = new DataContext(dbContextOptions))
+            try
             {
-                var user = await GetUserByEmail(Email, dataContext);
-                if (user.Email.Equals(Email)) 
+                using (var dataContext = new DataContext(dbContextOptions))
                 {
-                    return true;
+                    var user = await GetUserByEmail(Email, dataContext);
+                    if (user != null)
+                    {
+                        if (user.Email.Equals(Email))
+                        {
+                            return true;
+                        }
+                    }
                 }
+                return false;
             }
-            return true;
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
         public async Task<bool> DeleteUser(string Email, string Password)
         {
@@ -257,6 +268,54 @@ namespace MailAPI.Services
             {
                 Console.WriteLine(ex.Message);
                 return false;
+            }
+        }
+        private string GenerateRandomToken()
+        {
+            const int length = 32;
+            const string allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var randomBytes = new byte[length];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomBytes);
+            }
+
+            var tokenBuilder = new StringBuilder(length);
+            foreach (byte b in randomBytes)
+            {
+                tokenBuilder.Append(allowedChars[b % allowedChars.Length]);
+            }
+
+            return tokenBuilder.ToString();
+        }
+        private async Task<bool> AddTokenToDb(string email, string token)
+        {
+            if (await TokenExists(email))
+            {
+                using (var dataContext = new DataContext(dbContextOptions))
+                {
+                    var user = await GetUserByEmail(email, dataContext);
+                    dataContext.MailToken.Add(new MailToken
+                    {
+                        UserID = user.UserID,
+                        Key = token,
+                        ExpirationDate = DateTime.UtcNow.AddMonths(3),
+                    });
+
+                    await dataContext.SaveChangesAsync(); // Ожидание завершения операции сохранения
+                }
+                return true;
+            }
+            return false;
+        }
+
+        private async Task<bool> TokenExists(string email)
+        {
+            using (var dataContext = new DataContext(dbContextOptions))
+            {
+                var user = await GetUserByEmail(email, dataContext);
+                var userId = user.UserID;
+                return await dataContext.MailToken.AnyAsync(x => x.UserID== userId);
             }
         }
     }

@@ -10,3 +10,14 @@ D:\MailAPI.AppWeb\MailAPI.Data.Models\obj\Debug\net7.0\refint\MailAPI.Data.Model
 D:\MailAPI.AppWeb\MailAPI.Data.Models\obj\Debug\net7.0\MailAPI.Data.Models.pdb
 D:\MailAPI.AppWeb\MailAPI.Data.Models\obj\Debug\net7.0\ref\MailAPI.Data.Models.dll
 D:\MailAPI.AppWeb\MailAPI.Data.Models\obj\Debug\net7.0\MailAPI.Data.Models.sourcelink.json
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Data.Models\bin\Debug\net7.0\MailAPI.Data.Models.deps.json
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Data.Models\bin\Debug\net7.0\MailAPI.Data.Models.dll
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Data.Models\bin\Debug\net7.0\MailAPI.Data.Models.pdb
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Data.Models\obj\Debug\net7.0\MailAPI.Data.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Data.Models\obj\Debug\net7.0\MailAPI.Data.Models.AssemblyInfoInputs.cache
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Data.Models\obj\Debug\net7.0\MailAPI.Data.Models.AssemblyInfo.cs
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Data.Models\obj\Debug\net7.0\MailAPI.Data.Models.csproj.CoreCompileInputs.cache
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Data.Models\obj\Debug\net7.0\MailAPI.Data.Models.dll
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Data.Models\obj\Debug\net7.0\refint\MailAPI.Data.Models.dll
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Data.Models\obj\Debug\net7.0\MailAPI.Data.Models.pdb
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Data.Models\obj\Debug\net7.0\ref\MailAPI.Data.Models.dll
