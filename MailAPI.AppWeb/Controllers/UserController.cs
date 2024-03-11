@@ -1,4 +1,5 @@
-﻿using MailAPI.Services;
+﻿using MailAPI.Data.Models;
+using MailAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
@@ -18,26 +19,37 @@ namespace MailAPI.AppWeb.Controllers
         [HttpPost("RegisterUser")]
         public IActionResult CreateUser(string FirstName, string LastName, string Email, string password)
         {
-            UserService.RegisterUser(FirstName,LastName,Email,password);
+            var createUser = UserService.RegisterUser(FirstName,LastName,Email,password);
             return Ok();
         }
-        [HttpGet("LoginUser")]
-        public IActionResult LoginUser(string  Email, string password) 
+        [HttpGet("GetUserByID")]
+        public Task<User> GetUser(int id) 
         {
-            UserService.Login(Email, password);
-            return Ok();
+            return UserService.GetUserById(id);
+
+        }
+        [HttpPost("EditUser")]
+        public Task<User> EditUser(int id, string Email,string password)
+        {
+            return UserService.EditUser(id, Email, password);
+
         }
         [HttpDelete("DeleteUser")]
-        public IActionResult DeleteUser(string Email, string password)
+        public Task<bool> DeleteUser(string Email, string password)
         {
-            UserService.DeleteUser(Email, password);
-            return Ok();
+            return UserService.DeleteUser(Email, password);
+
+        }
+        [HttpGet("LoginUser")]
+        public Task<bool> LoginUser(string Email, string password)
+        {
+            return UserService.Login(Email, password);
         }
         [HttpDelete("Logout")]
-        public IActionResult Logout(string Email) 
+        public Task<bool> Logout(string Email) 
         {
-            UserService.Logout(Email);
-            return Ok();
+             return UserService.Logout(Email);
+            
         }
 
 

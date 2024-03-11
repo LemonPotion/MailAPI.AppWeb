@@ -4,8 +4,10 @@ namespace MailAPI.Services
 {
     public interface IEmailService
     {
-        Task SendEmailAsync(string Email , string Subject , string message);
-        Task<bool> SendEmailDb(string email, string subject, string message);
         Task<List<MessageHistory>> GetMessageHistory();
+        Task<Message> GetMessageById(int Id);
+        Task<Message> EditMessage(int Id,string body,string subject);
+        Task<bool> DeleteMessage(int Id);
+        Task<bool> SendEmail(int userId,string email, string subject, string message);
     }
 }

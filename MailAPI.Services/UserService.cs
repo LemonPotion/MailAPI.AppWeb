@@ -82,17 +82,46 @@ namespace MailAPI.Services
                 return false;
             }
         }
+        public async Task<User> GetUserById(int id)
+        {
+            using (var dataContext = new DataContext(dbContextOptions))
+            {
+                var user = await dataContext.Users.FirstOrDefaultAsync(x => x.UserID == id);
+                if (user != null)
+                    return user;
+                else
+                    return new User();
+            }
+        }
+
+        public async Task<User> EditUser(int id, string Email, string Password)
+        {
+            using (var dataContext = new DataContext(dbContextOptions))
+            {
+                var user = await GetUserById(id);
+                if (user != null)
+                {
+                    user.Email = Email;
+                    user.PasswordHash = HashPassword(user.Salt, Password);
+
+                    // Помечаем объект как измененный
+                    dataContext.Update(user);
+
+                    // Сохраняем изменения в базе данных
+                    await dataContext.SaveChangesAsync();
+                    return user;
+                }
+                return new User();
+            }
+        }
+
         public async Task<User> GetUserByEmail(string Email, DataContext dataContext)
         {
-            try
-            {
-                var user = await dataContext.Users.FirstOrDefaultAsync(x => x.Email == Email);
-                return user;
-            }
-            catch
-            {
-                return null;
-            }
+            var user = await dataContext.Users.FirstOrDefaultAsync(x => x.Email == Email);
+            if (user != null)
+            return user;
+            else
+                return new User();
         }
 
         public async Task DeleteUser(User user, DataContext dataContext)
@@ -107,6 +136,7 @@ namespace MailAPI.Services
                 Console.WriteLine($"Ошибка при удалении пользователя: {ex.Message}");
             }
         }
+
         public async Task<bool> Login(string Email, string Password)
         {
             using (var dataContext = new DataContext(dbContextOptions))

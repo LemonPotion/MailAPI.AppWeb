@@ -1,4 +1,5 @@
-﻿using MailAPI.Services;
+﻿using MailAPI.Data.Models;
+using MailAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,22 +16,29 @@ namespace MailAPI.AppWeb.Controllers
             this.emailSender = emailSender;
         }
         [HttpPost("SendEmail")]
-        public IActionResult send_email(string email , string subject , string body)
+        public Task<bool> send_email(int SenderId,string email , string subject , string body)
         {
-            emailSender.SendEmailAsync(email,subject,body);
-            return Ok();
+            return emailSender.SendEmail(SenderId,email , subject , body);
         }
-        [HttpGet("SendEmailDb")]
-        public IActionResult send_email_db(string email, string subject, string body)
+        [HttpGet("GetEmailByID")]
+        public Task<Message> GetMessage(int id)
         {
-            emailSender.SendEmailDb(email,subject,body);
-            return Ok();
+            return emailSender.GetMessageById(id);
+        }
+        [HttpPost("EditMessage")]
+        public Task<Message> EditMessage(int id , string body , string subject)
+        {
+            return emailSender.EditMessage(id,body,subject);
+        }
+        [HttpDelete("DeleteMessage")]
+        public Task<bool> DeleteMessage(int id) 
+        {
+            return emailSender.DeleteMessage(id);
         }
         [HttpGet("GetMessageHistoryList")]
-        public IActionResult GetMessageHistory()
+        public Task<List<MessageHistory>> GetMessageHistory()
         {
-            emailSender.GetMessageHistory();
-            return Ok();
+            return emailSender.GetMessageHistory();
         }
     }
 }
