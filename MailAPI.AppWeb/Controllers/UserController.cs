@@ -17,9 +17,9 @@ namespace MailAPI.AppWeb.Controllers
             this.UserService = UserService;
         }
         [HttpPost("RegisterUser")]
-        public IActionResult CreateUser(string FirstName, string LastName, string Email, string password)
+        public IActionResult CreateUser(string FirstName, string LastName, string Email, string password, int roleid)
         {
-            var createUser = UserService.RegisterUser(FirstName,LastName,Email,password);
+            var createUser = UserService.RegisterUser(FirstName,LastName,Email,password,roleid);
             return Ok();
         }
         [HttpGet("GetUserByID")]
@@ -27,6 +27,11 @@ namespace MailAPI.AppWeb.Controllers
         {
             return UserService.GetUserById(id);
 
+        }
+        [HttpGet("GetRole")]
+        public Task<Role> GetRole(int id) 
+        {
+            return UserService.GetRole(id);
         }
         [HttpPost("EditUser")]
         public Task<User> EditUser(int id, string Email,string password)

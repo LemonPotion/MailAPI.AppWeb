@@ -217,6 +217,32 @@
   },
   {
     "ContainingType": "MailAPI.AppWeb.Controllers.UserController",
+    "Method": "GetRole",
+    "RelativePath": "api/User/GetRole",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "MailAPI.Data.Models.Role",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MailAPI.AppWeb.Controllers.UserController",
     "Method": "GetUser",
     "RelativePath": "api/User/GetUserByID",
     "HttpMethod": "GET",
@@ -324,6 +350,11 @@
       {
         "Name": "password",
         "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "roleid",
+        "Type": "System.Int32",
         "IsRequired": false
       }
     ],

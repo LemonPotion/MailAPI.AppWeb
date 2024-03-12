@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using System.Net.Mail;
 using System.Net;
 using Microsoft.Extensions.Logging;
+using MailAPI.Data.Migrations;
 
 namespace MailAPI.Services
 {
@@ -24,7 +25,7 @@ namespace MailAPI.Services
         {
             this.dbContextOptions = dbContext;
         }
-        public async Task RegisterUser(string FirstName, string LastName, string Email, string password)
+        public async Task RegisterUser(string FirstName, string LastName, string Email, string password,int roleid)
         {
             if (UserExists(Email, dbContextOptions))
             {
@@ -36,7 +37,7 @@ namespace MailAPI.Services
                     try
                     {
                         // Ожидаем завершения операции добавления пользователя
-                        bool userAdded = await AddUser(FirstName, LastName, Email, PasswordHash, salt);
+                        bool userAdded = await AddUser(FirstName, LastName, Email, PasswordHash, salt, roleid);
                         if (userAdded)
                         {
                             Console.WriteLine("Пользователь успешно зарегистрирован");
@@ -58,27 +59,35 @@ namespace MailAPI.Services
 
             }
         }
-        public async Task<bool> AddUser(string FirstName, string LastName, string Email, string PasswordHash, string salt)
+        public async Task<bool> AddUser(string FirstName, string LastName, string Email, string PasswordHash, string salt , int roleid)
         {
             try
-            { 
+            {
+                
                 using (var dataContext = new DataContext(dbContextOptions))
                 {
-                    await dataContext.Users.AddAsync(new User
+                    var role = await GetRole(roleid,dataContext);
+                    if (role != null)
                     {
-                        FirstName = FirstName,
-                        LastName = LastName,
-                        Email = Email,
-                        PasswordHash = PasswordHash.ToString(),
-                        Salt = salt,
-                        RoleID = GetRole()
-                    });
-                    await dataContext.SaveChangesAsync();
+                        await dataContext.Users.AddAsync(new User
+                        {
+                            FirstName = FirstName,
+                            LastName = LastName,
+                            Email = Email,
+                            PasswordHash = PasswordHash.ToString(),
+                            Salt = salt,
+                            RoleID = role.RoleId,
+                            Role = role,
+                        });
+                        await dataContext.SaveChangesAsync();
+                        return true;
+                    }
                 };
-                return true;
+                return false;
             }
-            catch
+            catch(Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
         }
@@ -101,8 +110,10 @@ namespace MailAPI.Services
                 var user = await GetUserById(id);
                 if (user != null)
                 {
+                    var salt = GenerateSalt();
                     user.Email = Email;
-                    user.PasswordHash = HashPassword(user.Salt, Password);
+                    user.Salt = salt; // Генерируем новую соль
+                    user.PasswordHash = HashPassword(Password, salt); // Хешируем пароль с новой солью
 
                     // Помечаем объект как измененный
                     dataContext.Update(user);
@@ -145,12 +156,18 @@ namespace MailAPI.Services
 
                 if (user != null)
                 {
-                    var PasswordHashed = HashPassword(Password, user.Salt);
+                    var PasswordHashed = HashPassword(Password, user.Salt); // Используем соль из базы данных для хэширования
 
                     if (PasswordHashed.Equals(user.PasswordHash))
                     {
                         Console.WriteLine("Успешная авторизация");
-                        return true;
+                        var token = GenerateRandomToken();
+                        var TokenAdded = await AddTokenToDb(user.UserID, token);
+                        Console.WriteLine($"Статус токена - {TokenAdded}") ;
+                        if (TokenAdded)
+                            return true;
+                        else
+                            return false;
                     }
                     else
                     {
@@ -174,20 +191,38 @@ namespace MailAPI.Services
                     var user = await GetUserByEmail(Email, dataContext);
                     if (user != null)
                     {
-                        if (user.Email.Equals(Email))
+                        // Здесь вы можете удалить токены аутентификации или уведомления о сеансе пользователя
+                        // Пример: удаление токена аутентификации
+                        var token = await GetToken(user);
+                        if (token.TokenID!=0)
                         {
+                            dataContext.Remove(token);
+                            await dataContext.SaveChangesAsync();
                             return true;
                         }
                     }
                 }
                 return false;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return false;
             }
         }
+
+        private async Task<MailToken> GetToken(User user)
+        {
+            using (var dataContext = new DataContext(dbContextOptions))
+            {
+                var token = await dataContext.MailToken.FirstOrDefaultAsync(x=> x.UserID == user.UserID);
+                if (token != null)
+                    return token;
+                else
+                    return   new MailToken();
+            }
+        }
+
         public async Task<bool> DeleteUser(string Email, string Password)
         {
             try
@@ -215,9 +250,14 @@ namespace MailAPI.Services
         }
 
 
-        public int GetRole()
+        public async Task<Role> GetRole(int id, DataContext dataContext)
         {
-            return 1;
+
+                var role = await dataContext.Role.FirstOrDefaultAsync(x => x.RoleId == id);
+                if(role != null)
+                return role;
+                else
+                return new Role();
         }
         public bool ValidateCode(string code)
         {
@@ -318,13 +358,14 @@ namespace MailAPI.Services
 
             return tokenBuilder.ToString();
         }
-        private async Task<bool> AddTokenToDb(string email, string token)
+        private async Task<bool> AddTokenToDb(int id, string token)
         {
-            if (await TokenExists(email))
+            var TokenEx= await TokenExists(id);
+            if (!TokenEx)
             {
                 using (var dataContext = new DataContext(dbContextOptions))
                 {
-                    var user = await GetUserByEmail(email, dataContext);
+                    var user = await GetUserById(id);
                     dataContext.MailToken.Add(new MailToken
                     {
                         UserID = user.UserID,
@@ -338,14 +379,22 @@ namespace MailAPI.Services
             }
             return false;
         }
-
-        private async Task<bool> TokenExists(string email)
+        private async Task<bool> TokenExists(int id)
         {
             using (var dataContext = new DataContext(dbContextOptions))
             {
-                var user = await GetUserByEmail(email, dataContext);
+                var user = await GetUserById(id);
                 var userId = user.UserID;
                 return await dataContext.MailToken.AnyAsync(x => x.UserID== userId);
+            }
+        }
+
+        public async Task<Role> GetRole(int id)
+        {
+            using (var dataContext = new DataContext(dbContextOptions))
+            {
+                var role = await dataContext.Role.FirstOrDefaultAsync(x => x.RoleId == id);
+                return role ?? new Role();
             }
         }
     }

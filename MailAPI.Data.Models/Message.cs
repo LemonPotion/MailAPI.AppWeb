@@ -13,11 +13,20 @@ namespace MailAPI.Data.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MessageID { get; set; }
-        [ForeignKey("UserID")] 
+
+        [Required]
+        // Внешний ключ для связи с User
+        [ForeignKey("User")]
         public int UserID { get; set; }
+        public User User { get; set; }
+
+        [Required]
         public string MailAdress { get; set; } = string.Empty;
+        [Required]
         public string Subject { get; set; } = string.Empty;
+        [Required]
         public string Body { get; set; } = string.Empty;
+        [Required]
         public DateTime DateSent { get; set; }
     }
 }

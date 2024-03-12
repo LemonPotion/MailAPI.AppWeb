@@ -53,7 +53,7 @@ namespace MailAPI.Services
                         Console.WriteLine("Сообщение добавлено в бд");
                         return true;
                 };
-                return false;
+
             }
             catch (Exception ex) 
             {

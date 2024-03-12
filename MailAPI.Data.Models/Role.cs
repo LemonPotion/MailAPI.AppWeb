@@ -13,6 +13,7 @@ namespace MailAPI.Data.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int RoleId { get; set; }
+        [Required]
         public  string RoleName { get; set; } = string.Empty;
     }
 }

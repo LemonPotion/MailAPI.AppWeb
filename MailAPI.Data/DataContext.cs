@@ -19,9 +19,20 @@ namespace MailAPI.Data
         public DbSet<MessageHistory> MessageHistory { get; set; }
         public DbSet<Message> Message { get; set; }
         public DbSet<MailToken> MailToken { get; set; }
-        protected override void OnModelCreating(ModelBuilder Modelbuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<MessageHistory>()
+                .HasOne(mh => mh.User)
+                .WithMany()
+                .HasForeignKey(mh => mh.UserID)
+                .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<MessageHistory>()
+                .HasOne(mh => mh.Message)
+                .WithMany()
+                .HasForeignKey(mh => mh.MessageID)
+                .OnDelete(DeleteBehavior.Restrict);
         }
+
     }
 }

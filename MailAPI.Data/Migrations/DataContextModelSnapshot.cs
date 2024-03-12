@@ -42,6 +42,8 @@ namespace MailAPI.Data.Migrations
 
                     b.HasKey("TokenID");
 
+                    b.HasIndex("UserID");
+
                     b.ToTable("MailToken");
                 });
 
@@ -73,6 +75,8 @@ namespace MailAPI.Data.Migrations
 
                     b.HasKey("MessageID");
 
+                    b.HasIndex("UserID");
+
                     b.ToTable("Message");
                 });
 
@@ -91,6 +95,10 @@ namespace MailAPI.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("MessageHistoryID");
+
+                    b.HasIndex("MessageID");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("MessageHistory");
                 });
@@ -145,7 +153,61 @@ namespace MailAPI.Data.Migrations
 
                     b.HasKey("UserID");
 
+                    b.HasIndex("RoleID");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("MailAPI.Data.Models.MailToken", b =>
+                {
+                    b.HasOne("MailAPI.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MailAPI.Data.Models.Message", b =>
+                {
+                    b.HasOne("MailAPI.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MailAPI.Data.Models.MessageHistory", b =>
+                {
+                    b.HasOne("MailAPI.Data.Models.Message", "Message")
+                        .WithMany()
+                        .HasForeignKey("MessageID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("MailAPI.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Message");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("MailAPI.Data.Models.User", b =>
+                {
+                    b.HasOne("MailAPI.Data.Models.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
                 });
 #pragma warning restore 612, 618
         }

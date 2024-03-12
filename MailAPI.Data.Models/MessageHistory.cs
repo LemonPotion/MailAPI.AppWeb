@@ -13,9 +13,17 @@ namespace MailAPI.Data.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MessageHistoryID { get; set; }
-        [ForeignKey("UserID")]
+
+        [Required]
+        // Внешний ключ для связи с User
+        [ForeignKey("User")]
         public int UserID { get; set; }
-        [ForeignKey("MessageID")]
-        public int  MessageID { get; set; }
+        public User User { get; set; }
+
+        [Required]
+        // Внешний ключ для связи с Message
+        [ForeignKey("Message")]
+        public int MessageID { get; set; }
+        public Message Message { get; set; }
     }
 }
