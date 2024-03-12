@@ -16,13 +16,13 @@ namespace MailAPI.Services
         {
             this.dbContextOptions = dbContext;
         }
-        public async Task<List<MessageHistory>>  GetMessageHistory()
+        public async Task<List<Message>>  GetMessageHistory(int id)
         {
             try
             {
                 using (var dataContext = new DataContext(dbContextOptions))
                 {
-                    var messagehistory = await dataContext.MessageHistory.ToListAsync();
+                    var messagehistory = await dataContext.Message.Where(m => m.UserID == id).ToListAsync();
                     return messagehistory;
                 };
   
@@ -31,7 +31,7 @@ namespace MailAPI.Services
             catch (Exception ex) 
             {
                 Console.WriteLine(ex.Message);
-                return new List<MessageHistory>();
+                return new List<Message>();
             }
         }
         public async Task<bool> SendEmailDb(int userId, string email, string subject, string message)
@@ -49,7 +49,7 @@ namespace MailAPI.Services
                             Body = message,
                             DateSent = DateTime.Now
                         });
-                        await dataContext.SaveChangesAsync();
+                    await dataContext.SaveChangesAsync();
                         Console.WriteLine("Сообщение добавлено в бд");
                         return true;
                 };
@@ -65,6 +65,7 @@ namespace MailAPI.Services
         {
             try
             {
+
                 var sended = await SendEmailAsync(email, subject, message); //может быть такое что письмо отправлено но адреса не существует
                 if (sended)
                 {

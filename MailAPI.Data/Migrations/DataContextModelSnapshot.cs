@@ -22,6 +22,36 @@ namespace MailAPI.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("MailAPI.Data.Models.ContactHistory", b =>
+                {
+                    b.Property<int>("ContactHistoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ContactHistoryID"));
+
+                    b.Property<string>("ContactMail")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ContactHistoryID");
+
+                    b.HasIndex("UserID");
+
+                    b.ToTable("ContactHistory");
+                });
+
             modelBuilder.Entity("MailAPI.Data.Models.MailToken", b =>
                 {
                     b.Property<int>("TokenID")
@@ -80,29 +110,6 @@ namespace MailAPI.Data.Migrations
                     b.ToTable("Message");
                 });
 
-            modelBuilder.Entity("MailAPI.Data.Models.MessageHistory", b =>
-                {
-                    b.Property<int>("MessageHistoryID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MessageHistoryID"));
-
-                    b.Property<int>("MessageID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
-
-                    b.HasKey("MessageHistoryID");
-
-                    b.HasIndex("MessageID");
-
-                    b.HasIndex("UserID");
-
-                    b.ToTable("MessageHistory");
-                });
-
             modelBuilder.Entity("MailAPI.Data.Models.Role", b =>
                 {
                     b.Property<int>("RoleId")
@@ -158,6 +165,17 @@ namespace MailAPI.Data.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("MailAPI.Data.Models.ContactHistory", b =>
+                {
+                    b.HasOne("MailAPI.Data.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("MailAPI.Data.Models.MailToken", b =>
                 {
                     b.HasOne("MailAPI.Data.Models.User", "User")
@@ -176,25 +194,6 @@ namespace MailAPI.Data.Migrations
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("MailAPI.Data.Models.MessageHistory", b =>
-                {
-                    b.HasOne("MailAPI.Data.Models.Message", "Message")
-                        .WithMany()
-                        .HasForeignKey("MessageID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("MailAPI.Data.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Message");
 
                     b.Navigation("User");
                 });

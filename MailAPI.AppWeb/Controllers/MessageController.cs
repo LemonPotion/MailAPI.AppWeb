@@ -36,9 +36,9 @@ namespace MailAPI.AppWeb.Controllers
             return emailSender.DeleteMessage(id);
         }
         [HttpGet("GetMessageHistoryList")]
-        public Task<List<MessageHistory>> GetMessageHistory()
+        public Task<List<Message>> GetMessageHistory(int id)
         {
-            return emailSender.GetMessageHistory();
+            return emailSender.GetMessageHistory(id);
         }
     }
 }

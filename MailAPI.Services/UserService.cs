@@ -14,6 +14,7 @@ using System.Net.Mail;
 using System.Net;
 using Microsoft.Extensions.Logging;
 using MailAPI.Data.Migrations;
+using System.Data;
 
 namespace MailAPI.Services
 {
@@ -137,6 +138,7 @@ namespace MailAPI.Services
 
         public async Task DeleteUser(User user, DataContext dataContext)
         {
+
             try
             {
                 dataContext.Remove(user);
@@ -161,13 +163,24 @@ namespace MailAPI.Services
                     if (PasswordHashed.Equals(user.PasswordHash))
                     {
                         Console.WriteLine("Успешная авторизация");
-                        var token = GenerateRandomToken();
-                        var TokenAdded = await AddTokenToDb(user.UserID, token);
-                        Console.WriteLine($"Статус токена - {TokenAdded}") ;
-                        if (TokenAdded)
-                            return true;
+                        var tokenExists = await TokenExists(user.UserID);
+                        if (!tokenExists)
+                        {
+                            var token = GenerateRandomToken();
+                            var TokenAdded = await AddTokenToDb(user.UserID, token);
+                            Console.WriteLine($"Статус токена - {TokenAdded}");
+                            if (TokenAdded)
+                                return true;
+                        }
                         else
-                            return false;
+                        {
+                            var token = await GetToken(user);
+                            if (token.ExpirationDate >DateTime.Now)
+                            {
+                                await Logout(user.Email);
+                            }
+                        }
+                        return false;
                     }
                     else
                     {
@@ -191,8 +204,6 @@ namespace MailAPI.Services
                     var user = await GetUserByEmail(Email, dataContext);
                     if (user != null)
                     {
-                        // Здесь вы можете удалить токены аутентификации или уведомления о сеансе пользователя
-                        // Пример: удаление токена аутентификации
                         var token = await GetToken(user);
                         if (token.TokenID!=0)
                         {
@@ -396,6 +407,45 @@ namespace MailAPI.Services
                 var role = await dataContext.Role.FirstOrDefaultAsync(x => x.RoleId == id);
                 return role ?? new Role();
             }
+        }
+
+        public async Task<bool> AddContactHistory(int userId, string email, string name ,string description)
+        {
+            try
+            {
+                using (var dataContext = new DataContext(dbContextOptions))
+                {
+                    await dataContext.ContactHistory.AddAsync(new Data.Models.ContactHistory
+                    {
+                        UserID = userId,
+                        ContactName = name,
+                        ContactMail = email,
+                        Description = description
+                    });
+                    await dataContext.SaveChangesAsync();
+                    return true;
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        public Task<bool> DeleteContactHistory(string email)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> UpdateContactHistory(string email, string name, string description)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> GetContactHistory(string email)
+        {
+            throw new NotImplementedException();
         }
     }
 }
