@@ -17,6 +17,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IEmailService,EmailService>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IContactService, ContactHistoryService>();
+builder.Services.AddScoped<EmailSender>();
+builder.Services.AddScoped<PasswordService>();
 builder.Services.AddDbContext<DataContext>(x =>
                     x.UseSqlServer(builder.Configuration.GetConnectionString("MainDbConnection")));
 

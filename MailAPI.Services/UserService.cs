@@ -21,20 +21,25 @@ namespace MailAPI.Services
     public class UserService : IUserService
     {
         private readonly DbContextOptions<DataContext> dbContextOptions;
+        private readonly PasswordService passwordService;
+        private readonly EmailSender emailSender;
 
-        public UserService(DbContextOptions<DataContext> dbContext)
+        public UserService(DbContextOptions<DataContext> dbContext, PasswordService passwordService, EmailSender emailSender)
         {
             this.dbContextOptions = dbContext;
+            this.passwordService = passwordService;
+            this.emailSender = emailSender;
+
         }
         public async Task RegisterUser(string FirstName, string LastName, string Email, string password,int roleid)
         {
             if (UserExists(Email, dbContextOptions))
             {
-                string code = SendEmailVerification(Email);
+                string code = emailSender.SendEmailVerification(Email);
                 if (ValidateCode(code))
                 {
-                    var salt = GenerateSalt();
-                    var PasswordHash = HashPassword(password, salt);
+                    var salt = passwordService.GenerateSalt();
+                    var PasswordHash = passwordService.HashPassword(password, salt);
                     try
                     {
                         // Ожидаем завершения операции добавления пользователя
@@ -111,10 +116,10 @@ namespace MailAPI.Services
                 var user = await GetUserById(id);
                 if (user != null)
                 {
-                    var salt = GenerateSalt();
+                    var salt = passwordService.GenerateSalt();
                     user.Email = Email;
                     user.Salt = salt; // Генерируем новую соль
-                    user.PasswordHash = HashPassword(Password, salt); // Хешируем пароль с новой солью
+                    user.PasswordHash = passwordService.HashPassword(Password, salt); // Хешируем пароль с новой солью
 
                     // Помечаем объект как измененный
                     dataContext.Update(user);
@@ -158,7 +163,7 @@ namespace MailAPI.Services
 
                 if (user != null)
                 {
-                    var PasswordHashed = HashPassword(Password, user.Salt); // Используем соль из базы данных для хэширования
+                    var PasswordHashed = passwordService.HashPassword(Password, user.Salt); // Используем соль из базы данных для хэширования
 
                     if (PasswordHashed.Equals(user.PasswordHash))
                     {
@@ -174,7 +179,7 @@ namespace MailAPI.Services
                         }
                         else
                         {
-                            var token = await GetToken(user);
+                            var token = await   GetToken(user.UserID);
                             if (token.ExpirationDate >DateTime.Now)
                             {
                                 await Logout(user.Email);
@@ -204,7 +209,7 @@ namespace MailAPI.Services
                     var user = await GetUserByEmail(Email, dataContext);
                     if (user != null)
                     {
-                        var token = await GetToken(user);
+                        var token = await GetToken(user.UserID);
                         if (token.TokenID!=0)
                         {
                             dataContext.Remove(token);
@@ -222,18 +227,6 @@ namespace MailAPI.Services
             }
         }
 
-        private async Task<MailToken> GetToken(User user)
-        {
-            using (var dataContext = new DataContext(dbContextOptions))
-            {
-                var token = await dataContext.MailToken.FirstOrDefaultAsync(x=> x.UserID == user.UserID);
-                if (token != null)
-                    return token;
-                else
-                    return   new MailToken();
-            }
-        }
-
         public async Task<bool> DeleteUser(string Email, string Password)
         {
             try
@@ -244,7 +237,7 @@ namespace MailAPI.Services
                     if (user != null)
                     {
                         var salt = user.Salt;
-                        var PasswordHashed = HashPassword(Password, salt);
+                        var PasswordHashed = passwordService.HashPassword(Password, salt);
                         if (user.PasswordHash.Equals(PasswordHashed))
                         {
                             await DeleteUser(user, dataContext); // Передаем dataContext в качестве аргумента
@@ -274,65 +267,6 @@ namespace MailAPI.Services
         {
             return true;
         }
-        public string GenerateSalt()
-        {
-            byte[] saltBytes = new  byte[16];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(saltBytes);
-            }
-            return Convert.ToBase64String(saltBytes);
-        }
-        private string HashPassword(string password, string salt)
-        {
-            using (var sha256 = SHA256.Create())
-            {
-                byte[] saltedPassword = Encoding.UTF8.GetBytes(password + salt);
-                byte[] hashedPassword = sha256.ComputeHash(saltedPassword);
-                return Convert.ToBase64String(hashedPassword);
-            }
-        }
-
-        public string SendEmailVerification(string email)
-        {
-            // Адрес отправителя
-            string fromEmail = "vladred2016@gmail.com";
-            Random random = new Random();
-
-            string password = "xxgm atru tips dzdd";
-            // Создание экземпляра почтового сообщения
-            MailMessage mail = new MailMessage(fromEmail, email);
-            mail.IsBodyHtml = true;
-
-            mail.Subject = "Код подтверждения MailASP";
-
-            mail.Body =  $"{random.Next(0,9999)}";
-
-
-
-            // Настройка SMTP клиента для Gmail
-            using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
-            {
-
-                smtpClient.Port = 587;
-
-                smtpClient.EnableSsl = true;
-                // Аутентификация с использованием учетных данных
-                smtpClient.Credentials = new NetworkCredential(fromEmail, password);
-
-                try
-                {
-                    smtpClient.SendMailAsync(mail).GetAwaiter();
-                    Console.WriteLine("Письмо отправленно");
-                    return mail.Body;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Ошибка при отправке письма: {ex.Message}");
-                    return "";
-                }
-            }
-        }
         public bool UserExists(string email, DbContextOptions<DataContext> dbContextOptions)
         {
             try
@@ -351,27 +285,18 @@ namespace MailAPI.Services
                 return false;
             }
         }
-        private string GenerateRandomToken()
+
+        public async Task<Role> GetRole(int id)
         {
-            const int length = 32;
-            const string allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            var randomBytes = new byte[length];
-            using (var rng = RandomNumberGenerator.Create())
+            using (var dataContext = new DataContext(dbContextOptions))
             {
-                rng.GetBytes(randomBytes);
+                var role = await dataContext.Role.FirstOrDefaultAsync(x => x.RoleId == id);
+                return role ?? new Role();
             }
-
-            var tokenBuilder = new StringBuilder(length);
-            foreach (byte b in randomBytes)
-            {
-                tokenBuilder.Append(allowedChars[b % allowedChars.Length]);
-            }
-
-            return tokenBuilder.ToString();
         }
-        private async Task<bool> AddTokenToDb(int id, string token)
+        public async Task<bool> AddTokenToDb(int id, string token)
         {
-            var TokenEx= await TokenExists(id);
+            var TokenEx = await TokenExists(id);
             if (!TokenEx)
             {
                 using (var dataContext = new DataContext(dbContextOptions))
@@ -390,62 +315,45 @@ namespace MailAPI.Services
             }
             return false;
         }
-        private async Task<bool> TokenExists(int id)
+
+        public string GenerateRandomToken()
+        {
+            const int length = 32;
+            const string allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            var randomBytes = new byte[length];
+            using (var rng = RandomNumberGenerator.Create())
+            {
+                rng.GetBytes(randomBytes);
+            }
+
+            var tokenBuilder = new StringBuilder(length);
+            foreach (byte b in randomBytes)
+            {
+                tokenBuilder.Append(allowedChars[b % allowedChars.Length]);
+            }
+
+            return tokenBuilder.ToString();
+        }
+
+        public async Task<bool> TokenExists(int id)
         {
             using (var dataContext = new DataContext(dbContextOptions))
             {
                 var user = await GetUserById(id);
                 var userId = user.UserID;
-                return await dataContext.MailToken.AnyAsync(x => x.UserID== userId);
+                return await dataContext.MailToken.AnyAsync(x => x.UserID == userId);
             }
         }
-
-        public async Task<Role> GetRole(int id)
+        public async Task<MailToken> GetToken(int id)
         {
             using (var dataContext = new DataContext(dbContextOptions))
             {
-                var role = await dataContext.Role.FirstOrDefaultAsync(x => x.RoleId == id);
-                return role ?? new Role();
+                var token = await dataContext.MailToken.FirstOrDefaultAsync(x => x.UserID == id);
+                if (token != null)
+                    return token;
+                else
+                    return new MailToken();
             }
-        }
-
-        public async Task<bool> AddContactHistory(int userId, string email, string name ,string description)
-        {
-            try
-            {
-                using (var dataContext = new DataContext(dbContextOptions))
-                {
-                    await dataContext.ContactHistory.AddAsync(new Data.Models.ContactHistory
-                    {
-                        UserID = userId,
-                        ContactName = name,
-                        ContactMail = email,
-                        Description = description
-                    });
-                    await dataContext.SaveChangesAsync();
-                    return true;
-                }
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                return false;
-            }
-        }
-
-        public Task<bool> DeleteContactHistory(string email)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> UpdateContactHistory(string email, string name, string description)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> GetContactHistory(string email)
-        {
-            throw new NotImplementedException();
         }
     }
 }
