@@ -19,24 +19,28 @@ namespace MailAPI.Services
             this.emailSender = emailSender;
 
         }
-        public async Task<List<Message>>  GetMessageHistory(int id)
+        public async Task<List<Message>> GetMessageHistory(int id, int pageNumber, int pageSize)
         {
             try
             {
                 using (var dataContext = new DataContext(dbContextOptions))
                 {
-                    var messagehistory = await dataContext.Message.Where(m => m.UserID == id).ToListAsync();
-                    return messagehistory;
-                };
-  
+                    var messagehistory = await dataContext.Message
+                        .Where(m => m.UserID == id)
+                        .Skip((pageNumber - 1) * pageSize)
+                        .Take(pageSize)
+                        .ToListAsync();
 
+                    return messagehistory;
+                }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return new List<Message>();
             }
         }
+
         public async Task<bool> SendEmailDb(int userId, string email, string subject, string message)
         {
             try

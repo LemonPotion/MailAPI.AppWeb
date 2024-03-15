@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hlV9bKZZoEoe/hmLZuDX2orw8YxPK9riX69FFRx9LxXcp2Mr7OyKB4cuQD8deE8SxzmWdVvtpPfMQ/y9SBHo7g==",
+  "dgSpecHash": "C2QLb6jqbdYQjK0NvdYRhyBisutWMsC1naccf0bo7fDyXhc7gU3WTnIk6sBLkLTX17KmGJmsrkg+nZzE0RMoEQ==",
   "success": true,
-  "projectFilePath": "D:\\MailAPI.AppWeb\\MailAPI.AppWeb\\MailAPI.AppWeb.csproj",
+  "projectFilePath": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.AppWeb\\MailAPI.AppWeb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lemon\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Lemon\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

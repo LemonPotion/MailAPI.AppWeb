@@ -4,7 +4,7 @@ namespace MailAPI.Services
 {
     public interface IEmailService
     {
-        Task<List<Message>> GetMessageHistory(int id);
+        Task<List<Message>> GetMessageHistory(int id, int pageNumber, int pageSize);
         Task<Message> GetMessageById(int Id);
         Task<Message> EditMessage(int Id,string body,string subject);
         Task<bool> DeleteMessage(int Id);

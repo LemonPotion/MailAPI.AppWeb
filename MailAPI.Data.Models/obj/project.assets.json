@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailAPI.Data.Models.csproj",
+      "projectUniqueName": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailAPI.Data.Models.csproj",
       "projectName": "MailAPI.Data.Models",
-      "projectPath": "D:\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailAPI.Data.Models.csproj",
+      "projectPath": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailAPI.Data.Models.csproj",
       "packagesPath": "C:\\Users\\Lemon\\.nuget\\packages\\",
-      "outputPath": "D:\\MailAPI.AppWeb\\MailAPI.Data.Models\\obj\\",
+      "outputPath": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data.Models\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Lemon\\AppData\\Roaming\\NuGet\\NuGet.Config",
