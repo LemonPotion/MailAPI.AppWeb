@@ -1,6 +1,10 @@
 using MailAPI.Data;
+using MailAPI.Data.Migrations;
+using MailAPI.Data.Models;
 using MailAPI.Services;
+using MailAPI.Services.IServices;
 using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +14,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<IEmailSender,EmailSender>();
+builder.Services.AddTransient<IEmailService,EmailService>();
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IContactService, ContactHistoryService>();
+builder.Services.AddScoped<EmailSender>();
+builder.Services.AddScoped<PasswordService>();
 builder.Services.AddDbContext<DataContext>(x =>
                     x.UseSqlServer(builder.Configuration.GetConnectionString("MainDbConnection")));
 

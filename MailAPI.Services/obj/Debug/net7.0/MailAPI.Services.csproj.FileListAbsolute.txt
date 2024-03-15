@@ -9,3 +9,27 @@ D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.dll
 D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\refint\MailAPI.Services.dll
 D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.pdb
 D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\ref\MailAPI.Services.dll
+D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.sourcelink.json
+D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.csproj.AssemblyReference.cache
+D:\MailAPI.AppWeb\MailAPI.Services\bin\Debug\net7.0\MailAPI.Data.dll
+D:\MailAPI.AppWeb\MailAPI.Services\bin\Debug\net7.0\MailAPI.Data.Models.dll
+D:\MailAPI.AppWeb\MailAPI.Services\bin\Debug\net7.0\MailAPI.Data.pdb
+D:\MailAPI.AppWeb\MailAPI.Services\bin\Debug\net7.0\MailAPI.Data.Models.pdb
+D:\MailAPI.AppWeb\MailAPI.Services\obj\Debug\net7.0\MailAPI..69A7A190.Up2Date
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\bin\Debug\net7.0\MailAPI.Services.deps.json
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\bin\Debug\net7.0\MailAPI.Services.dll
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\bin\Debug\net7.0\MailAPI.Services.pdb
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\bin\Debug\net7.0\MailAPI.Data.dll
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\bin\Debug\net7.0\MailAPI.Data.Models.dll
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\bin\Debug\net7.0\MailAPI.Data.pdb
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\bin\Debug\net7.0\MailAPI.Data.Models.pdb
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.csproj.AssemblyReference.cache
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.AssemblyInfoInputs.cache
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.AssemblyInfo.cs
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.csproj.CoreCompileInputs.cache
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\obj\Debug\net7.0\MailAPI..69A7A190.Up2Date
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.dll
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\obj\Debug\net7.0\refint\MailAPI.Services.dll
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\obj\Debug\net7.0\MailAPI.Services.pdb
+C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb-Dev\MailAPI.Services\obj\Debug\net7.0\ref\MailAPI.Services.dll

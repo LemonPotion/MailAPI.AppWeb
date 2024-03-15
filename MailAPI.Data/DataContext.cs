@@ -14,10 +14,15 @@ namespace MailAPI.Data
         {
 
         }
-        DbSet<User> Users { get; set; }
-        protected override void OnModelCreating(ModelBuilder Modelbuilder)
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Role { get; set; }
+        public DbSet<ContactHistory> ContactHistory { get; set; }
+        public DbSet<Message> Message { get; set; }
+        public DbSet<MailToken> MailToken { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+           
         }
+
     }
 }
