@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MailAPI.Data.Models")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9db5ab82999fc7e421c1b7946a103db08b449c47")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+311a8b59a631e17cd3f713e1158c21aa646421ed")]
 [assembly: System.Reflection.AssemblyProductAttribute("MailAPI.Data.Models")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MailAPI.Data.Models")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

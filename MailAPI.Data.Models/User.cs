@@ -16,7 +16,7 @@ namespace MailAPI.Data.Models
         [Required]
         [ForeignKey("Role")]
         public int RoleID { get; set; }
-        public Role Role { get; set; }
+        public Role     Role { get; set; }
         [Required]
         public string Email { get; set; } = string.Empty;
         [Required]

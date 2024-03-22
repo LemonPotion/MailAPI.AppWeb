@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MailAPI.AppWeb\\MailAPI.AppWeb\\MailAPI.AppWeb.csproj": {}
+    "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.AppWeb\\MailAPI.AppWeb.csproj": {}
   },
   "projects": {
-    "D:\\MailAPI.AppWeb\\MailAPI.AppWeb\\MailAPI.AppWeb.csproj": {
+    "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.AppWeb\\MailAPI.AppWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MailAPI.AppWeb\\MailAPI.AppWeb\\MailAPI.AppWeb.csproj",
+        "projectUniqueName": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.AppWeb\\MailAPI.AppWeb.csproj",
         "projectName": "MailAPI.AppWeb",
-        "projectPath": "D:\\MailAPI.AppWeb\\MailAPI.AppWeb\\MailAPI.AppWeb.csproj",
+        "projectPath": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.AppWeb\\MailAPI.AppWeb.csproj",
         "packagesPath": "C:\\Users\\Lemon\\.nuget\\packages\\",
-        "outputPath": "D:\\MailAPI.AppWeb\\MailAPI.AppWeb\\obj\\",
+        "outputPath": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.AppWeb\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lemon\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj": {
-                "projectPath": "D:\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj"
+              "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj": {
+                "projectPath": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj"
               },
-              "D:\\MailAPI.AppWeb\\MailAPI.Services\\MailAPI.Services.csproj": {
-                "projectPath": "D:\\MailAPI.AppWeb\\MailAPI.Services\\MailAPI.Services.csproj"
+              "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Services\\MailAPI.Services.csproj": {
+                "projectPath": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Services\\MailAPI.Services.csproj"
               }
             }
           }
@@ -84,14 +84,14 @@
         }
       }
     },
-    "D:\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailAPI.Data.Models.csproj": {
+    "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailAPI.Data.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailAPI.Data.Models.csproj",
+        "projectUniqueName": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailAPI.Data.Models.csproj",
         "projectName": "MailAPI.Data.Models",
-        "projectPath": "D:\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailAPI.Data.Models.csproj",
+        "projectPath": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailAPI.Data.Models.csproj",
         "packagesPath": "C:\\Users\\Lemon\\.nuget\\packages\\",
-        "outputPath": "D:\\MailAPI.AppWeb\\MailAPI.Data.Models\\obj\\",
+        "outputPath": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data.Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lemon\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -144,14 +144,14 @@
         }
       }
     },
-    "D:\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj": {
+    "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj",
+        "projectUniqueName": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj",
         "projectName": "MailAPI.Data",
-        "projectPath": "D:\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj",
+        "projectPath": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj",
         "packagesPath": "C:\\Users\\Lemon\\.nuget\\packages\\",
-        "outputPath": "D:\\MailAPI.AppWeb\\MailAPI.Data\\obj\\",
+        "outputPath": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lemon\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -168,8 +168,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailAPI.Data.Models.csproj": {
-                "projectPath": "D:\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailAPI.Data.Models.csproj"
+              "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailAPI.Data.Models.csproj": {
+                "projectPath": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data.Models\\MailAPI.Data.Models.csproj"
               }
             }
           }
@@ -224,14 +224,14 @@
         }
       }
     },
-    "D:\\MailAPI.AppWeb\\MailAPI.Services\\MailAPI.Services.csproj": {
+    "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Services\\MailAPI.Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MailAPI.AppWeb\\MailAPI.Services\\MailAPI.Services.csproj",
+        "projectUniqueName": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Services\\MailAPI.Services.csproj",
         "projectName": "MailAPI.Services",
-        "projectPath": "D:\\MailAPI.AppWeb\\MailAPI.Services\\MailAPI.Services.csproj",
+        "projectPath": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Services\\MailAPI.Services.csproj",
         "packagesPath": "C:\\Users\\Lemon\\.nuget\\packages\\",
-        "outputPath": "D:\\MailAPI.AppWeb\\MailAPI.Services\\obj\\",
+        "outputPath": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Services\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lemon\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -248,8 +248,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "D:\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj": {
-                "projectPath": "D:\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj"
+              "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj": {
+                "projectPath": "C:\\Users\\Lemon\\OneDrive\\Рабочий стол\\MailAPI.AppWeb\\MailAPI.Data\\MailAPI.Data.csproj"
               }
             }
           }

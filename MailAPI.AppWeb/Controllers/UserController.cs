@@ -17,10 +17,10 @@ namespace MailAPI.AppWeb.Controllers
             this.UserService = UserService;
         }
         [HttpPost("RegisterUser")]
-        public IActionResult CreateUser(string FirstName, string LastName, string Email, string password, int roleid)
+        public bool CreateUser(string FirstName, string LastName, string Email, string password, int roleid)
         {
             var createUser = UserService.RegisterUser(FirstName,LastName,Email,password,roleid);
-            return Ok();
+            return createUser.GetAwaiter().GetResult();
         }
         [HttpGet("GetUserByID")]
         public Task<User> GetUser(int id) 

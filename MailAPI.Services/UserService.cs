@@ -31,7 +31,7 @@ namespace MailAPI.Services
             this.emailSender = emailSender;
 
         }
-        public async Task RegisterUser(string FirstName, string LastName, string Email, string password,int roleid)
+        public async Task<bool> RegisterUser(string FirstName, string LastName, string Email, string password,int roleid)
         {
             if (UserExists(Email, dbContextOptions))
             {
@@ -47,6 +47,7 @@ namespace MailAPI.Services
                         if (userAdded)
                         {
                             Console.WriteLine("Пользователь успешно зарегистрирован");
+                            return true;
                         }
                         else
                         {
@@ -64,6 +65,7 @@ namespace MailAPI.Services
                 }
 
             }
+            return false;
         }
         public async Task<bool> AddUser(string FirstName, string LastName, string Email, string PasswordHash, string salt , int roleid)
         {

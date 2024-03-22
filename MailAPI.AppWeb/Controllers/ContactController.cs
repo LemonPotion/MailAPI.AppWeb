@@ -16,6 +16,7 @@ namespace MailAPI.AppWeb.Controllers
         {
             this.contactService = contactService;
         }
+
         [HttpGet("GetContact")]
         public Task<ContactHistory> GetContact(int id)
         {

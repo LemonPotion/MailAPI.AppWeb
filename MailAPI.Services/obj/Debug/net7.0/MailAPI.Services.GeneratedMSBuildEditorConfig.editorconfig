@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MailAPI.Services
-build_property.ProjectDir = D:\MailAPI.AppWeb\MailAPI.Services\
+build_property.ProjectDir = C:\Users\Lemon\OneDrive\Рабочий стол\MailAPI.AppWeb\MailAPI.Services\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
